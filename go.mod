@@ -1,4 +1,4 @@
-module github.com/caddyserver/dnsproviders
+module github.com/JensKuehnel/dnsproviders
 
 go 1.12
 
@@ -37,3 +37,4 @@ require (
 )
 
 replace github.com/h2non/gock => gopkg.in/h2non/gock.v1 v1.0.14
+
