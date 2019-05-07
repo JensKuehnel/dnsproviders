@@ -5,7 +5,7 @@ package joker
 import (
 	"errors"
 
-	"github.com/go-acme/lego/providers/dns/joker"
+	"github.com/JensKuehnel/lego/providers/dns/joker"
 	"github.com/mholt/caddy/caddytls"
 )
 
