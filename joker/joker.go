@@ -5,8 +5,8 @@ package joker
 import (
 	"errors"
 
-	"github.com/JensKuehnel/lego/providers/dns/joker"
-	"github.com/mholt/caddy/caddytls"
+	"github.com/caddyserver/caddy/caddytls"
+	"github.com/go-acme/providers/dns/joker"
 )
 
 func init() {
