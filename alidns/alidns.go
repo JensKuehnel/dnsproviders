@@ -1,33 +1,32 @@
-// Package cloudxns adapts the lego CloudXNS DNS
+// Package alidns adapts the lego Ali DNS
 // provider for Caddy. Importing this package plugs it in.
-package cloudxns
+package alidns
 
 import (
 	"errors"
 
 	"github.com/caddyserver/caddy/caddytls"
-	"github.com/go-acme/lego/providers/dns/cloudxns"
+	"github.com/go-acme/lego/providers/dns/alidns"
 )
 
 func init() {
-	caddytls.RegisterDNSProvider("cloudxns", NewDNSProvider)
+	caddytls.RegisterDNSProvider("alidns", NewDNSProvider)
 }
 
-// NewDNSProvider returns a new CloudXNS DNS challenge provider.
+// NewDNSProvider returns a new alidns DNS challenge provider.
 // The credentials are interpreted as follows:
 //
 // len(0): use credentials from environment
-// len(2): credentials[0] = API key
-//         credentials[1] = Secret key
+// len(1): credentials[0] = access token (API key)
 func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
-		return cloudxns.NewDNSProvider()
-	case 2:
-		config := cloudxns.NewDefaultConfig()
+		return alidns.NewDNSProvider()
+	case 1:
+		config := alidns.NewDefaultConfig()
 		config.APIKey = credentials[0]
 		config.SecretKey = credentials[1]
-		return cloudxns.NewDNSProviderConfig(config)
+		return alidns.NewDNSProviderConfig(config)
 	default:
 		return nil, errors.New("invalid credentials length")
 	}
